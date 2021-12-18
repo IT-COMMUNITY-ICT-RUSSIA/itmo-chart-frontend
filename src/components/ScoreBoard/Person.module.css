@@ -1,0 +1,14 @@
+.person {
+  display: flex;
+  list-style: none;
+  background-color: #d1d1e9;
+  justify-content: space-between;
+  font-family: "Inter";
+  margin: 1rem;
+  border-radius: 10px;
+}
+.person div {
+  display: block;
+  padding: 1rem;
+  text-align: center;
+}
