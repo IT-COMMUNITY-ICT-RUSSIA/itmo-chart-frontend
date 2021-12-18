@@ -7,6 +7,10 @@ import React, {
   useRef,
 } from "react";
 
+import axios from "axios";
+
+import AuthContext from "../../store/auth-context";
+
 import classes from "./Entrance.module.css";
 import cancelCross from "../../assets/cancel.png";
 
@@ -16,21 +20,24 @@ import MyButton from "../UI/MyButton";
 
 const emailReducer = (prevState, action) => {
   if (action.type === "USER_EMAIL") {
-    return { value: action.val, isValid: action.val.includes("@") };
+    return { value: action.val, isValid: action.val.trim().length === 6 };
   }
   if (action.type === "INPUT_BLUR") {
-    return { value: prevState.value, isValid: prevState.value.includes("@") };
+    return {
+      value: prevState.value,
+      isValid: prevState.value.trim().length === 6,
+    };
   }
 };
 
 const passwordReducer = (prevState, action) => {
   if (action.type === "USER_PASS") {
-    return { value: action.val, isValid: action.val.trim().length > 6 };
+    return { value: action.val, isValid: action.val.trim().length > 0 };
   }
   if (action.type === "INPUT_BLUR") {
     return {
       value: prevState.value,
-      isValid: prevState.value.trim().length > 6,
+      isValid: prevState.value.trim().length > 0,
     };
   }
 };
@@ -75,17 +82,40 @@ function Entrance(props) {
     dispatchPass({ type: "INPUT_BLUR" });
   };
 
+  let username = "000001";
+  let password = "@EurpUe*9X5KhReSjdAjC@sbeyi7Ex";
+
   const submitHandler = (event) => {
     event.preventDefault();
+    if (formIsValid) {
+      axios
+        .post(
+          "http://itmochart.netmvas.com:5000/user/login",
+          `username=${emailState.value}&password=${passState.value}&scope=&client_id=&client_secret=`,
+          {
+            headers: {
+              "Content-Type": "application/x-www-form-urlencoded",
+            },
+          }
+        )
+        .then((res) => {
+          localStorage.setItem("token", res.data.access_token);
+          // successChecker(res);
+          // Here we should get information about user with this jwt
+        })
+        .catch((error) => {
+          // errorChecker(JSON.parse(error.request.response));
+        });
+    }
   };
+
   return (
     <Modal>
-      <form onSubmit={submitHandler}>
+      <form id={"formData"} onSubmit={submitHandler}>
         <h1>Войти в личный кабинет</h1>
         <Input
           ref={emailInputRef}
           state={emailState}
-          type="email"
           id="email"
           onChange={emailChangeHandler}
           onBlur={validateEmailHandler}

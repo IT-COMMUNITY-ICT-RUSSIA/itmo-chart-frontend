@@ -10,9 +10,11 @@ function LeaderBoard() {
   const [currnetMegafaculty, setCurrnetMegafaculty] = useState("");
   const [currnetFaculty, setCurrneFaculty] = useState("");
   const [currnetProgram, setCurrnetProgram] = useState("");
-  const [currnetGroup, setCurrnetGroup] = useState("");
 
   const [users, setUsers] = useState([]);
+
+  const [sortFaculty, setSortFaculty] = useState([]);
+  const [sortProgram, setSortProgram] = useState([]);
 
   useEffect(() => {
     const apiUrl = `http://itmochart.netmvas.com:5000/chart/`;
@@ -22,14 +24,13 @@ function LeaderBoard() {
           megafaculty: currnetMegafaculty === "" ? null : currnetMegafaculty,
           faculty: currnetFaculty === "" ? null : currnetFaculty,
           program: currnetProgram === "" ? null : currnetProgram,
-          group: currnetGroup === "" ? null : currnetGroup,
         },
       })
       .then((resp) => {
         const allPersons = resp.data.chart_data;
         setUsers(allPersons);
       });
-  }, [currnetMegafaculty, currnetFaculty, currnetProgram, currnetGroup]);
+  }, [currnetMegafaculty, currnetFaculty, currnetProgram]);
 
   const currnetMegafacultyHandler = (sort) => {
     setCurrnetMegafaculty(sort);
@@ -40,58 +41,33 @@ function LeaderBoard() {
   const currnetProgramHandler = (sort) => {
     setCurrnetProgram(sort);
   };
-  const currnetGroupHandler = (sort) => {
-    setCurrnetGroup(sort);
-  };
-  let sortFaculty = [];
-  let sortProgram = [];
-  let sortGroup = [];
-  // факультеты
-  if (currnetMegafaculty === "МФ ТИНТ") {
-    sortFaculty = ["ФИКТ", "ФИТИП"];
 
-    if (currnetFaculty === "ФИКТ") {
-      sortProgram = [
-        "Прикладная информатика",
-        "Инфокоммуникационные технологии и системы связи",
-      ];
-    }
-    if (currnetFaculty === "ФИТИП") {
-      sortProgram = [
-        "Прикладная математика и информатика",
-        "Информационные системы и технологии",
-      ];
-    }
-  }
-  if (currnetMegafaculty === "МФ КТУ") {
-    sortFaculty = ["ФПИиКТ", "ФБИТ", "ФСУиР"];
+  useEffect(() => {
+    if (currnetMegafaculty === "МФ КТУ") {
+      setSortFaculty(["ФПИиКТ", "ФБИТ", "ФСУиР"]);
 
-    if (currnetFaculty === "ФПИиКТ") {
-      sortProgram = [
-        "Информатика и вычислительная техника",
-        "Программная инженерия",
-      ];
+      if (currnetFaculty === "ФПИиКТ") {
+        setSortProgram([
+          "Информатика и вычислительная техника",
+          "Программная инженерия",
+        ]);
+      } else if (currnetFaculty === "ФБИТ") {
+        setSortProgram([
+          "Информационная безопасность",
+          "Конструирование и технология электронных средств",
+        ]);
+      } else if (currnetFaculty === "ФСУиР") {
+        setSortProgram(["Робототехника", "Приборостроение"]);
+      }
+    } else if (currnetMegafaculty === "ФТ МФ") {
+      setSortFaculty(["ИИФ", "ФФ"]);
+      if (currnetFaculty === "ИИФ") {
+        setSortProgram(["Оптотехника"]);
+      } else if (currnetFaculty === "ФФ") {
+        setSortProgram(["Фотоника и оптоинформатика", "Техническая физика"]);
+      }
     }
-    if (currnetFaculty === "ФБИТ") {
-      sortProgram = [
-        "Информационная безопасность",
-        "Конструирование и технология электронных средств",
-      ];
-    }
-    if (currnetFaculty === "ФСУиР") {
-      sortProgram = ["Робототехника", "Приборостроение"];
-    }
-  }
-  if (currnetMegafaculty === "ФТ МФ") {
-    sortFaculty = ["ИИФ", "ФФ"];
-    if (currnetFaculty === "ИИФ") {
-      sortProgram = ["Оптотехника"];
-    }
-    if (currnetFaculty === "ФФ") {
-      sortProgram = ["Фотоника и оптоинформатика", "Техническая физика"];
-    }
-  }
-  // направления
+  }, [currnetMegafaculty, currnetFaculty]);
 
   return (
     <section className={classes["top-page"]}>

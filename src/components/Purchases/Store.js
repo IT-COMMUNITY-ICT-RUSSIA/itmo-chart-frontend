@@ -1,10 +1,11 @@
 import classes from "./Store.module.css";
-
+import axios from "axios";
 import Item from "./Item";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import StoreModal from "./StoreModal";
 function Store() {
   const [confirmModalShown, setConfirmModal] = useState(false);
+  const [currentItems, setcurrentItems] = useState([]);
 
   const shownConfirmModalHandler = () => {
     setConfirmModal(true);
@@ -57,16 +58,26 @@ function Store() {
       img: "https://www.giftsgifts.ru/upload/iblock/f09/f099eb8c90e1033d698160c8c2abda6f.jpg",
     },
   ];
+
+  useEffect(() => {
+    const apiUrl = `http://itmochart.netmvas.com:5000/service/rewards`;
+    axios.get(apiUrl).then((resp) => {
+      const rewards = resp.data.rewards;
+      setcurrentItems(rewards);
+    });
+  }, [currentItems]);
+
   return (
     <section className={classes.listOfItem}>
-      {data.map((item) => {
+      {currentItems.map((item) => {
         return (
           <Item
             openModal={shownConfirmModalHandler}
             id={item.id}
             name={item.name}
-            img={item.img}
-            ammount={item.ammount}
+            des={item.description}
+            img={item.thumbnail}
+            ammount={item.price}
           />
         );
       })}

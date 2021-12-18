@@ -18,6 +18,7 @@
 }
 .card img {
   width: 250px;
+  height: 250px;
 }
 
 @keyframes slide-right {
