@@ -1,4 +1,12 @@
+.top-page {
+  font-family: "Inter";
+  text-align: center;
+}
+.top-page h1 {
+  font-size: 25px;
+  font-weight: bold;
+}
+
 .board {
-  width: 80%;
-  margin: 0 auto;
+  margin: 0 42px;
 }

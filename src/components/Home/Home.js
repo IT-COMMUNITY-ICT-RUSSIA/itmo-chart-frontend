@@ -6,6 +6,7 @@ import Store from "../Purchases/Store";
 import LeaderBoard from "../ScoreBoard/LeaderBoard";
 
 import { Routes, Route, Link } from "react-router-dom";
+import UserAccount from "../Account/UserAccount";
 
 function Home(props) {
   return (
@@ -15,7 +16,7 @@ function Home(props) {
         <Route path="main" element={<Main />} />
         <Route path="top" element={<LeaderBoard />} />
         <Route path="store" element={<Store />} />
-        <Route path="account" element={<h1>account</h1>} />
+        <Route path="account" element={<UserAccount />} />
       </Routes>
     </>
   );
