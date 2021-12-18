@@ -34,9 +34,12 @@ function LeaderBoard() {
 
   const currnetMegafacultyHandler = (sort) => {
     setCurrnetMegafaculty(sort);
+    setCurrneFaculty('')
+    setCurrnetProgram('');
   };
   const currnetFacultyHandler = (sort) => {
     setCurrneFaculty(sort);
+    setCurrnetProgram('');
   };
   const currnetProgramHandler = (sort) => {
     setCurrnetProgram(sort);

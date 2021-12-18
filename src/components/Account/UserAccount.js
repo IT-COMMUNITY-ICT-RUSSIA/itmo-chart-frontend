@@ -2,24 +2,38 @@ import classes from "./UserAccount.module.css";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
-function UserAccount() {
+function UserAccount(props) {
   const [currentUser, setCurrentUser] = useState("");
 
   useEffect(() => {
+
     const apiUrl = `http://itmochart.netmvas.com:5000/user/me`;
-    const data = {
-      access_token:
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwMDAwMDEiLCJleHAiOjE2Mzk4NTUwNjl9.3eKMt6WynFwK87XIozYnYTFNykPnuaG2Aoh5fMsNlKk",
-      token_type: "bearer",
-    };
-    axios.get(apiUrl, {}).then((resp) => {
-      console.log(resp);
-    });
-  }, [currentUser]);
+    axios
+      .get(apiUrl, {
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
+      .then((response) => {
+        console.log(response.data.user);
+        setCurrentUser(response.data.user)
+      });
+  },[]);
 
   return (
     <section>
-      <h1>Добро пожаловать user</h1>
+      {localStorage.getItem('token') ? (
+        <div >
+          <div>{currentUser.name}</div>
+          <div>{currentUser.coins}</div>
+          <div>{currentUser.birth_date}</div>
+          <div>{currentUser.faculty}</div>
+          <div>{currentUser.program}</div>
+        </div>
+      ) : (
+        <h1>Зайдите в систему для того, чтобы увидеть ваш аккаунт </h1>
+      )}
     </section>
   );
 }

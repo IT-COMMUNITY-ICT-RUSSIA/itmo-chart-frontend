@@ -5,15 +5,23 @@ import avatar from "../../assets/avatar1.png";
 import { Link } from "react-router-dom";
 
 import React, { useContext, useState } from "react";
+import AuthContext, { AuthContextProvider } from "../../store/auth-context";
 import { ModalActions } from "../../store/modal-context";
+import { useEffect } from "react/cjs/react.development";
 
 function Header() {
   const { onClose, onOpen } = useContext(ModalActions);
-  const [isLoggedIn, setLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // it use for refresh component
+
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      setIsLoggedIn(true);
+    }
+  }, [localStorage.getItem("token")]);
 
   const logotHandler = () => {
-    setLoggedIn(false);
-    localStorage.remove("token");
+    localStorage.removeItem("token");
+    setIsLoggedIn(false);
   };
 
   return (
@@ -30,16 +38,18 @@ function Header() {
           <Link to="/account">Личный кабинет</Link>
         </nav>
         <div>
-          <img src={avatar} />
-          {isLoggedIn ? (
-            <MyButton Click={logotHandler} isExit={true} isHole={true}>
-              Выйти
-            </MyButton>
-          ) : (
-            <MyButton Click={onOpen} isHole={true}>
-              Войти
-            </MyButton>
-          )}
+          <AuthContextProvider>
+            <img src={avatar} />
+            {localStorage.getItem("token") ? (
+              <MyButton Click={logotHandler} isExit={true} isHole={true}>
+                Выйти
+              </MyButton>
+            ) : (
+              <MyButton Click={onOpen} isHole={true}>
+                Войти
+              </MyButton>
+            )}
+          </AuthContextProvider>
         </div>
       </div>
     </header>

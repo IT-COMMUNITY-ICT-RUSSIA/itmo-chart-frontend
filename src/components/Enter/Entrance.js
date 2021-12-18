@@ -100,11 +100,10 @@ function Entrance(props) {
         )
         .then((res) => {
           localStorage.setItem("token", res.data.access_token);
-          // successChecker(res);
-          // Here we should get information about user with this jwt
+          onClose();
         })
         .catch((error) => {
-          // errorChecker(JSON.parse(error.request.response));
+          console.log(error);
         });
     }
   };

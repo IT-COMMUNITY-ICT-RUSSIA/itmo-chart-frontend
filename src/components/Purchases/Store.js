@@ -72,6 +72,7 @@ function Store() {
       {currentItems.map((item) => {
         return (
           <Item
+            key={item.id}
             openModal={shownConfirmModalHandler}
             id={item.id}
             name={item.name}

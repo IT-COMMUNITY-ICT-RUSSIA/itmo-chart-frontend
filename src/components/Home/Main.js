@@ -4,12 +4,9 @@ import welcomeImg from "../../assets/welcome-img.jpg";
 import React, { useContext, useState } from "react";
 import { ModalActions } from "../../store/modal-context";
 
-import AuthContext from "../../store/auth-context";
-
 function Main() {
   const { onClose, onOpen } = useContext(ModalActions);
 
-  const ctx = useContext(AuthContext);
   return (
     <main>
       <section className={classes.welcome}>
@@ -19,7 +16,7 @@ function Main() {
             Учись, получай токены и обменивай их на балы в своём факультете или
             на разные классные подарки от твоего любимого вуза
           </p>
-          {!ctx.isLoggedIn && (
+          {!localStorage.getItem("token") && (
             <MyButton Click={onOpen} isBig={true}>
               Войти
             </MyButton>
