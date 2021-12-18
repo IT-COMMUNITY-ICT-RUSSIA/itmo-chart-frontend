@@ -1,0 +1,21 @@
+.card {
+  font-family: "Inter";
+  max-width: 360px;
+
+  text-align: center;
+  margin: 0 3rem 2rem 3rem;
+  padding: 1rem;
+  transition: 0.3s all ease-out;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+}
+.card > div {
+  margin-bottom: 1rem;
+}
+.card img {
+  width: 250px;
+}
