@@ -8,9 +8,11 @@ import React, {
 } from "react";
 
 import classes from "./Entrance.module.css";
+import cancelCross from "../../assets/cancel.png";
 
 import Input from "../input/Input";
 import { ModalActions } from "../../modal-context";
+import MyButton from "../UI/MyButton";
 
 const emailReducer = (prevState, action) => {
   if (action.type === "USER_EMAIL") {
@@ -78,8 +80,8 @@ function Entrance(props) {
   };
   return (
     <Modal>
-      <div className={classes.cross} onClick={onClose}></div>
       <form onSubmit={submitHandler}>
+        <h1>Войти в личный кабинет</h1>
         <Input
           ref={emailInputRef}
           state={emailState}
@@ -88,7 +90,7 @@ function Entrance(props) {
           onChange={emailChangeHandler}
           onBlur={validateEmailHandler}
         >
-          E-Mail
+          ISU Number
         </Input>
         <Input
           ref={passInputRef}
@@ -98,14 +100,17 @@ function Entrance(props) {
           onChange={passwordChangeHandler}
           onBlur={validatePasswordHandler}
         >
-          Password
+          Пароль
         </Input>
         <div className={classes.actions}>
-          <button type="submit" className={classes.btn}>
-            Login
-          </button>
+          <MyButton isBig={true} type="submit">
+            Войти
+          </MyButton>
         </div>
       </form>
+      <button className={classes.cross} onClick={onClose}>
+        <img src={cancelCross} />
+      </button>
     </Modal>
   );
 }

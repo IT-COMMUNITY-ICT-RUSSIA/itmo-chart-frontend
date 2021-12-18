@@ -1,0 +1,27 @@
+form {
+  position: relative;
+  margin-bottom: 42px;
+}
+
+form h1 {
+  text-align: center;
+}
+
+.actions {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.cross {
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  top: 4px;
+  right: 9px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.cross img {
+  width: 13px;
+}

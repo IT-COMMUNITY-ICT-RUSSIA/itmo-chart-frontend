@@ -2,8 +2,8 @@ import classes from "./HomeHeader.module.css";
 import MyButton from "../UI/MyButton";
 import logo_transparent from "../../assets/itmo_small_white_rus.png";
 import avatar from "../../assets/avatar1.png";
-import React, { useContext } from "react";
 
+import React, { useContext } from "react";
 import { ModalActions } from "../../modal-context";
 
 function Header() {

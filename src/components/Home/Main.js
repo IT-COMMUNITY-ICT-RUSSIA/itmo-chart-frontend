@@ -1,8 +1,11 @@
 import classes from "./Main.module.css";
 import MyButton from "../UI/MyButton";
 import welcomeImg from "../../assets/welcome-img.jpg";
+import React, { useContext } from "react";
+import { ModalActions } from "../../modal-context";
 
 function Main() {
+  const { onClose, onOpen } = useContext(ModalActions);
   return (
     <main>
       <section className={classes.welcome}>
@@ -12,7 +15,10 @@ function Main() {
             Учись, получай токены и обменивай их на балы в своём факультете или
             на разные классные подарки от твоего любимого вуза
           </p>
-          <MyButton isBig={true}> Войти</MyButton>
+          <MyButton Click={onOpen} isBig={true}>
+            {" "}
+            Войти
+          </MyButton>
         </div>
         <div className={classes["right-content"]}>
           <img src={welcomeImg} />
