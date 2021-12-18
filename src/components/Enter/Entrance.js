@@ -11,7 +11,7 @@ import classes from "./Entrance.module.css";
 import cancelCross from "../../assets/cancel.png";
 
 import Input from "../input/Input";
-import { ModalActions } from "../../modal-context";
+import { ModalActions } from "../../store/modal-context";
 import MyButton from "../UI/MyButton";
 
 const emailReducer = (prevState, action) => {

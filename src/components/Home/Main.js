@@ -2,7 +2,7 @@ import classes from "./Main.module.css";
 import MyButton from "../UI/MyButton";
 import welcomeImg from "../../assets/welcome-img.jpg";
 import React, { useContext } from "react";
-import { ModalActions } from "../../modal-context";
+import { ModalActions } from "../../store/modal-context";
 
 function Main() {
   const { onClose, onOpen } = useContext(ModalActions);
@@ -16,7 +16,6 @@ function Main() {
             на разные классные подарки от твоего любимого вуза
           </p>
           <MyButton Click={onOpen} isBig={true}>
-            {" "}
             Войти
           </MyButton>
         </div>
