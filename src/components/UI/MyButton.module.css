@@ -1,0 +1,33 @@
+.def-btn {
+  font-family: "Inter";
+  border: none;
+  color: #fffffe;
+  background-color: #6246ea;
+  border: solid 2px #6246ea;
+  border-radius: 3em;
+  padding: 4px 40px;
+  line-height: 22px;
+  font-size: 12px;
+  font-weight: normal;
+  cursor: pointer;
+  transition: 0.3s all ease-in;
+}
+
+.def-btn:hover {
+  background-color: transparent;
+  color: #6246ea;
+}
+.def-btn_big {
+  font-size: 25px;
+  line-height: 29px;
+  padding: 15px 150px;
+}
+.def-btn_hole {
+  background-color: transparent;
+  border: solid 2px #2b2c34;
+  color: #2b2c34;
+}
+.def-btn_hole:hover {
+  background-color: #2b2c34;
+  color: #fffffe;
+}
