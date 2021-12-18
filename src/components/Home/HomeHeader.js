@@ -7,8 +7,12 @@ import { Link } from "react-router-dom";
 import React, { useContext } from "react";
 import { ModalActions } from "../../store/modal-context";
 
+import AuthContext from "../../store/auth-context";
+
 function Header() {
   const { onClose, onOpen } = useContext(ModalActions);
+
+  const ctx = useContext(AuthContext);
 
   return (
     <header>
@@ -25,9 +29,15 @@ function Header() {
         </nav>
         <div>
           <img src={avatar} />
-          <MyButton Click={onOpen} isHole={true}>
-            Войти
-          </MyButton>
+          {ctx.isLoggedIn ? (
+            <MyButton isExit={true} isHole={true}>
+              Выйти
+            </MyButton>
+          ) : (
+            <MyButton Click={onOpen} isHole={true}>
+              Войти
+            </MyButton>
+          )}
         </div>
       </div>
     </header>

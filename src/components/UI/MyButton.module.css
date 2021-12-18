@@ -31,3 +31,12 @@
   background-color: #2b2c34;
   color: #fffffe;
 }
+
+.def-btn_red {
+  color: #e45858;
+  border-color: #e45858;
+}
+.def-btn_red:hover {
+  background-color: #e45858;
+  color: #fffffe;
+}

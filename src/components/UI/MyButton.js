@@ -6,6 +6,7 @@ function MyButton({
   isHole = false,
   Click,
   children,
+  isExit,
   ...props
 }) {
   return (
@@ -14,7 +15,7 @@ function MyButton({
       {...props}
       className={`${classes["def-btn"]}  ${isBig && classes["def-btn_big"]} ${
         isHole && classes["def-btn_hole"]
-      } `}
+      }  ${isExit && classes["def-btn_red"]}`}
     >
       {children}
     </button>

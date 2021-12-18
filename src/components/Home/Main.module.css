@@ -1,6 +1,18 @@
 .welcome {
   display: flex;
   justify-content: space-between;
+  font-family: "Inter";
+  animation: slide-right 1.5s ease-out forwards;
+}
+@keyframes slide-right {
+  from {
+    opacity: 0;
+    transform: translateX(-5rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .left-content {

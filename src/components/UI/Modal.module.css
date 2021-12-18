@@ -9,6 +9,7 @@
 }
 
 .modal {
+  font-family: "Inter";
   position: fixed;
   top: 20vh;
   left: 5%;
