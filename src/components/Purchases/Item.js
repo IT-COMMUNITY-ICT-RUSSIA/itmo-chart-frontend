@@ -7,7 +7,7 @@ function Item(props) {
       <img src={props.img} />
       <h2>{props.name}</h2>
       <div>{`${props.ammount} tkn`}</div>
-      <MyButton>Купить</MyButton>
+      <MyButton Click={props.openModal}>Купить</MyButton>
     </div>
   );
 }

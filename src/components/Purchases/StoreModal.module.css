@@ -1,0 +1,4 @@
+.main-btns {
+  display: flex;
+  justify-content: space-evenly;
+}

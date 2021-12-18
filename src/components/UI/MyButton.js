@@ -6,7 +6,7 @@ function MyButton({
   isHole = false,
   Click,
   children,
-  isExit,
+  isExit = false,
   ...props
 }) {
   return (

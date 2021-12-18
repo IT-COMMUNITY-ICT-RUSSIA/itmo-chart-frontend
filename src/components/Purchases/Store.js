@@ -1,7 +1,18 @@
 import classes from "./Store.module.css";
 
 import Item from "./Item";
+import { useState } from "react";
+import StoreModal from "./StoreModal";
 function Store() {
+  const [confirmModalShown, setConfirmModal] = useState(false);
+
+  const shownConfirmModalHandler = () => {
+    setConfirmModal(true);
+  };
+
+  const closeConfirmModalHandler = () => {
+    setConfirmModal(false);
+  };
   const data = [
     {
       id: 12,
@@ -51,6 +62,7 @@ function Store() {
       {data.map((item) => {
         return (
           <Item
+            openModal={shownConfirmModalHandler}
             id={item.id}
             name={item.name}
             img={item.img}
@@ -58,6 +70,9 @@ function Store() {
           />
         );
       })}
+      {confirmModalShown && (
+        <StoreModal close={closeConfirmModalHandler}></StoreModal>
+      )}
     </section>
   );
 }

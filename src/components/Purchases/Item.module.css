@@ -1,12 +1,12 @@
 .card {
   font-family: "Inter";
   max-width: 360px;
-
   text-align: center;
   margin: 0 3rem 2rem 3rem;
   padding: 1rem;
   transition: 0.3s all ease-out;
   cursor: pointer;
+  animation: slide-right 1.5s ease-out forwards;
 }
 
 .card:hover {
@@ -18,4 +18,15 @@
 }
 .card img {
   width: 250px;
+}
+
+@keyframes slide-right {
+  from {
+    opacity: 0;
+    transform: translateY(7rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

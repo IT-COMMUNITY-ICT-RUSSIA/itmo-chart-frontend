@@ -33,10 +33,11 @@
 }
 
 .def-btn_red {
-  color: #e45858;
+  background-color: #e45858;
   border-color: #e45858;
+  color: #fffffe;
 }
 .def-btn_red:hover {
-  background-color: #e45858;
-  color: #fffffe;
+  background-color: transparent;
+  color: #e45858;
 }
