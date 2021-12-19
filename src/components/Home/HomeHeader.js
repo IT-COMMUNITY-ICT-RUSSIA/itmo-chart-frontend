@@ -26,7 +26,7 @@ function Header() {
   return (
     <header>
       <div className={classes.logo}>
-        <Link to="/main">
+        <Link to="/">
           <img alt="logo" src={logo_transparent} />
         </Link>
       </div>
@@ -34,14 +34,18 @@ function Header() {
         <nav>
           <Link to="/top">Рейтинг</Link>
           <Link to="/store">Магазин</Link>
-          <Link to="/account">Личный кабинет</Link>
+          {localStorage.getItem("token") && (
+            <Link to="/account">Личный кабинет</Link>
+          )}
         </nav>
         <div>
           <img src={avatar} />
           {localStorage.getItem("token") ? (
-            <MyButton Click={logotHandler} isExit={true} isHole={true}>
-              Выйти
-            </MyButton>
+            <Link to="/">
+              <MyButton Click={logotHandler} isExit={true} isHole={true}>
+                Выйти
+              </MyButton>
+            </Link>
           ) : (
             <MyButton Click={onOpen} isHole={true}>
               Войти
