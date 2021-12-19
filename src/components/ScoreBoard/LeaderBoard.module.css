@@ -18,9 +18,11 @@
   color: #fffffe;
   justify-content: space-between;
   font-family: "Inter";
+  font-size: 25spx;
   margin: 1rem;
   border-radius: 10px;
   text-transform: uppercase;
+  box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
 }
 .annotation div {
   flex: 1;

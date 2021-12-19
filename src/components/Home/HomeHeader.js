@@ -1,7 +1,6 @@
 import classes from "./HomeHeader.module.css";
 import MyButton from "../UI/MyButton";
 import logo_transparent from "../../assets/itmo_small_white_rus.png";
-import avatar from "../../assets/avatar1.png";
 import { Link } from "react-router-dom";
 
 import React, { useContext, useState } from "react";
@@ -12,6 +11,8 @@ import axios from "axios";
 function Header() {
   const { onClose, onOpen } = useContext(ModalActions);
   const [currentName, setcurrentName] = useState("");
+  const [currentImage, setCurrentImage] = useState("");
+
   const [isLoggedIn, setIsLoggedIn] = useState(false); // it use for refresh component
 
   useEffect(() => {
@@ -26,7 +27,11 @@ function Header() {
           },
         })
         .then((response) => {
-          console.log(response.data.user.name);
+          console.log(response.data.user.isu_id);
+          setCurrentImage(response.data.user.isu_id);
+          const fullName = response.data.user.name.split(" ");
+          fullName.pop();
+          setcurrentName(fullName.join(" "));
         });
     }
   }, [localStorage.getItem("token")]);
@@ -51,16 +56,18 @@ function Header() {
             <Link to="/account">Личный кабинет</Link>
           )}
         </nav>
-        <div>
-          <img src={avatar} />
+        <div className={classes.info}>
           {localStorage.getItem("token") ? (
-            <div>
-              <h1></h1>
-              <Link to="/">
-                <MyButton Click={logotHandler} isExit={true} isHole={true}>
-                  Выйти
-                </MyButton>
-              </Link>
+            <div className={classes["info-inner"]}>
+              <img src={`https://isu.ifmo.ru/userpics/${currentImage}.jpg`} />
+              <div>
+                <h3>{currentName}</h3>
+                <Link to="/">
+                  <MyButton Click={logotHandler} isExit={true} isHole={true}>
+                    Выйти
+                  </MyButton>
+                </Link>
+              </div>
             </div>
           ) : (
             <MyButton Click={onOpen} isHole={true}>
