@@ -59,32 +59,32 @@ function UserAccount(props) {
     <section className={classes.section}>
       {localStorage.getItem("token") ? (
         <div className={classes.profile}>
-          <h1>Информация:</h1>
-          <div>
+          <h1>Информация</h1>
+          <div className={classes['main-card']}>
             <h3>Имя: </h3>
             {currentUser.name}
           </div>
-          <div>
+          <div className={classes['main-card']}>
             <h3>Баллы: </h3>
             {currentUser.points}
           </div>
-          <div>
+          <div className={classes['main-card']}>
             <h3>Дата рождения:</h3>
             {getPerData(currentUser.birth_date)}
           </div>
-          <div>
+          <div className={classes['main-card']}>
             <h3>Факультет:</h3> {currentUser.faculty}
           </div>
-          <div>
+          <div className={classes['main-card']}>
             <h3>Направление:</h3> {currentUser.program}
           </div>
-          <h1>Достижения:</h1>
+          <h1>Достижения</h1>
           {currentAchievements.length === 0 
           ? <h2>У вас пока нет достижений</h2>
           : <div className={classes.field}>
               {currentAchievements.map((ach) => {
                 return (
-                <div className={classes.card}>
+                <div key={Math.random()}  className={classes.card}>
                   <h1>{ach.title}</h1>
                   <h4>Выдал: </h4>
                   <p>{ach.teacher_name}</p>
@@ -98,15 +98,16 @@ function UserAccount(props) {
             </div>
           }
           
-          <h1>Покупки:</h1>
+          <h1>Покупки</h1>
           {currentRewards.length === 0 
           ? <h2>У вас пока нет покупок</h2>
           : <div className={classes.field}>
               {currentRewards.map((item) => {
                 return (
-                  <div className={classes.card}>
+                  <div key={Math.random()} className={classes.card}>
                   <img src={item.thumbnail} ></img>
-                  <h4>Описание: {item.title}</h4>
+                  <h4>{item.title}</h4>
+                  <p>{getPerData(item.timestamp)}</p>
                   <p>Цена: {item.price}</p>
                 </div>
                 )
