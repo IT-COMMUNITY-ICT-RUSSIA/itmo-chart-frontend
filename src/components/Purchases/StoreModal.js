@@ -1,5 +1,6 @@
 import Modal from "../UI/Modal";
 import MyButton from "../UI/MyButton";
+import axios from "axios";
 
 import classes from "./StoreModal.module.css";
 

@@ -5,7 +5,6 @@ import avatar from "../../assets/avatar1.png";
 import { Link } from "react-router-dom";
 
 import React, { useContext, useState } from "react";
-import AuthContext, { AuthContextProvider } from "../../store/auth-context";
 import { ModalActions } from "../../store/modal-context";
 import { useEffect } from "react/cjs/react.development";
 
@@ -38,18 +37,16 @@ function Header() {
           <Link to="/account">Личный кабинет</Link>
         </nav>
         <div>
-          <AuthContextProvider>
-            <img src={avatar} />
-            {localStorage.getItem("token") ? (
-              <MyButton Click={logotHandler} isExit={true} isHole={true}>
-                Выйти
-              </MyButton>
-            ) : (
-              <MyButton Click={onOpen} isHole={true}>
-                Войти
-              </MyButton>
-            )}
-          </AuthContextProvider>
+          <img src={avatar} />
+          {localStorage.getItem("token") ? (
+            <MyButton Click={logotHandler} isExit={true} isHole={true}>
+              Выйти
+            </MyButton>
+          ) : (
+            <MyButton Click={onOpen} isHole={true}>
+              Войти
+            </MyButton>
+          )}
         </div>
       </div>
     </header>

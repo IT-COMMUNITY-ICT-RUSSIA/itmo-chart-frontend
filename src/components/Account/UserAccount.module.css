@@ -1,0 +1,20 @@
+.section{
+  font-family: "Inter";
+}
+.section h1 {
+  text-align: center;
+}
+
+.profile{
+  font-family: "Inter";
+  border-radius: 10px;
+  background-color: #d1d1e9;
+  margin: 0 auto;
+  width: 80%;
+  padding: 2rem;
+}
+
+.profile div {
+  padding: 1rem;
+
+}

@@ -34,12 +34,12 @@ function LeaderBoard() {
 
   const currnetMegafacultyHandler = (sort) => {
     setCurrnetMegafaculty(sort);
-    setCurrneFaculty('')
-    setCurrnetProgram('');
+    setCurrneFaculty("");
+    setCurrnetProgram("");
   };
   const currnetFacultyHandler = (sort) => {
     setCurrneFaculty(sort);
-    setCurrnetProgram('');
+    setCurrnetProgram("");
   };
   const currnetProgramHandler = (sort) => {
     setCurrnetProgram(sort);
@@ -94,6 +94,15 @@ function LeaderBoard() {
         options={sortProgram}
       ></Select>
       <ul className={classes.board}>
+        <li className={classes.annotation}>
+          <div>Позиция</div>
+          <div>Имя</div>
+          <div>Мегафакультет</div>
+          <div>Факультет</div>
+          <div>Направление</div>
+          <div>Группа</div>
+          <div>ТОкены</div>
+        </li>
         {users.map((person) => {
           return <Person key={person.rating_position} userData={person} />;
         })}

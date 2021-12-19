@@ -2,7 +2,11 @@ import classes from "./Select.module.css";
 
 function Select({ options, defaultValue, value, onChange }) {
   return (
-    <select value={value} onChange={(event) => onChange(event.target.value)}>
+    <select
+      className={classes.select}
+      value={value}
+      onChange={(event) => onChange(event.target.value)}
+    >
       <option disabled value="">
         {defaultValue}
       </option>

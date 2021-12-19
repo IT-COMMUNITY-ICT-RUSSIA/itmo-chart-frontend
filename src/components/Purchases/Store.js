@@ -6,58 +6,16 @@ import StoreModal from "./StoreModal";
 function Store() {
   const [confirmModalShown, setConfirmModal] = useState(false);
   const [currentItems, setcurrentItems] = useState([]);
+  const [currentId, setcurrentId] = useState("");
 
-  const shownConfirmModalHandler = () => {
+  const shownConfirmModalHandler = (event) => {
     setConfirmModal(true);
+    console.log(event.target);
   };
 
   const closeConfirmModalHandler = () => {
     setConfirmModal(false);
   };
-  const data = [
-    {
-      id: 12,
-      ammount: 14,
-      name: "футболка",
-      img: "https://www.giftsgifts.ru/upload/iblock/f09/f099eb8c90e1033d698160c8c2abda6f.jpg",
-    },
-    {
-      id: 12,
-      ammount: 14,
-      name: "футболка",
-      img: "https://www.giftsgifts.ru/upload/iblock/f09/f099eb8c90e1033d698160c8c2abda6f.jpg",
-    },
-    {
-      id: 12,
-      ammount: 14,
-      name: "футболка",
-      img: "https://www.giftsgifts.ru/upload/iblock/f09/f099eb8c90e1033d698160c8c2abda6f.jpg",
-    },
-    {
-      id: 12,
-      ammount: 14,
-      name: "футболка",
-      img: "https://www.giftsgifts.ru/upload/iblock/f09/f099eb8c90e1033d698160c8c2abda6f.jpg",
-    },
-    {
-      id: 12,
-      ammount: 14,
-      name: "футболка",
-      img: "https://www.giftsgifts.ru/upload/iblock/f09/f099eb8c90e1033d698160c8c2abda6f.jpg",
-    },
-    {
-      id: 12,
-      ammount: 14,
-      name: "футболка",
-      img: "https://www.giftsgifts.ru/upload/iblock/f09/f099eb8c90e1033d698160c8c2abda6f.jpg",
-    },
-    {
-      id: 12,
-      ammount: 14,
-      name: "футболка",
-      img: "https://www.giftsgifts.ru/upload/iblock/f09/f099eb8c90e1033d698160c8c2abda6f.jpg",
-    },
-  ];
 
   useEffect(() => {
     const apiUrl = `http://itmochart.netmvas.com:5000/service/rewards`;
@@ -83,7 +41,10 @@ function Store() {
         );
       })}
       {confirmModalShown && (
-        <StoreModal close={closeConfirmModalHandler}></StoreModal>
+        <StoreModal
+          id={currentId}
+          close={closeConfirmModalHandler}
+        ></StoreModal>
       )}
     </section>
   );

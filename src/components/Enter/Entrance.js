@@ -9,8 +9,6 @@ import React, {
 
 import axios from "axios";
 
-import AuthContext from "../../store/auth-context";
-
 import classes from "./Entrance.module.css";
 import cancelCross from "../../assets/cancel.png";
 
@@ -81,9 +79,6 @@ function Entrance(props) {
   const validatePasswordHandler = () => {
     dispatchPass({ type: "INPUT_BLUR" });
   };
-
-  let username = "000001";
-  let password = "@EurpUe*9X5KhReSjdAjC@sbeyi7Ex";
 
   const submitHandler = (event) => {
     event.preventDefault();
