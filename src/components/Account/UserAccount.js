@@ -26,7 +26,6 @@ function UserAccount(props) {
         },
       })
       .then((response) => {
-        console.log(response.data.user);
         setCurrentUser(response.data.user);
       });
 
@@ -38,6 +37,7 @@ function UserAccount(props) {
         },
       })
       .then((response) => {
+        console.log(response.data.achievements);
         setcurrentAchievements(response.data.achievements);
       });
 
@@ -84,7 +84,15 @@ function UserAccount(props) {
           : <div className={classes.field}>
               {currentAchievements.map((ach) => {
                 return (
-                <div className={classes.card}>{}</div>
+                <div className={classes.card}>
+                  <h1>{ach.title}</h1>
+                  <h4>Выдал: </h4>
+                  <p>{ach.teacher_name}</p>
+                  <h4>Описание:</h4>
+                  <p> {ach.description}</p>
+                  <h4>Получено баллов: </h4>
+                  <p>{ach.points_income}</p>
+                </div>
                 )
               })}
             </div>
@@ -94,9 +102,13 @@ function UserAccount(props) {
           {currentRewards.length === 0 
           ? <h2>У вас пока нет покупок</h2>
           : <div className={classes.field}>
-              {currentAchievements.map((item) => {
+              {currentRewards.map((item) => {
                 return (
-                <div className={classes.card}>{}</div>
+                  <div className={classes.card}>
+                  <img src={item.thumbnail} ></img>
+                  <h4>Описание: {item.title}</h4>
+                  <p>Цена: {item.price}</p>
+                </div>
                 )
               })}
             </div>

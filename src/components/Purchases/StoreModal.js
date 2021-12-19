@@ -7,19 +7,20 @@ import classes from "./StoreModal.module.css";
 function StoreModal(props) {
   console.log(props.id);
   const purchaseHandler = () => {
+    console.log(localStorage.getItem('token'));
     axios
       .post(
         `http://itmochart.netmvas.com:5000/service/checkout?reward_id=${props.id}`,{
           headers: {
             "Content-Type": 'application/json',
-            "Authorization": `Bearer ${localStorage.getItem("token")}`,
+            "Authorization": `Bearer ${localStorage.getItem('token')}`
           },
         }
         
       )
       .then((res) => {
         console.log(res);
-        // props.close();
+        props.close();
       })
       .catch((error) => {
         console.log(error);
