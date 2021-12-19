@@ -3,12 +3,12 @@ import classes from "./Item.module.css";
 
 function Item(props) {
   return (
-    <div onClick={props.openModal} className={classes.card} id={props.id}>
+    <div className={classes.card} >
       <img src={props.img} />
       <h2>{props.name}</h2>
       <p>{props.des}</p>
       <div>{`${props.ammount} tkn`}</div>
-      <MyButton Click={props.openModal}>Купить</MyButton>
+      <MyButton id={props.id} Click={props.openModal}>Купить</MyButton>
     </div>
   );
 }

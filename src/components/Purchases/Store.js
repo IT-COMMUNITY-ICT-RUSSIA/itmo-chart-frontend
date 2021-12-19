@@ -10,7 +10,7 @@ function Store() {
 
   const shownConfirmModalHandler = (event) => {
     setConfirmModal(true);
-    console.log(event.target);
+    setcurrentId(event.target.id);
   };
 
   const closeConfirmModalHandler = () => {
@@ -23,7 +23,7 @@ function Store() {
       const rewards = resp.data.rewards;
       setcurrentItems(rewards);
     });
-  }, [currentItems]);
+  }, []);
 
   return (
     <section className={classes.listOfItem}>
