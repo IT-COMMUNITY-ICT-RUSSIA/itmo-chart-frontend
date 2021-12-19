@@ -7,14 +7,27 @@ import { Link } from "react-router-dom";
 import React, { useContext, useState } from "react";
 import { ModalActions } from "../../store/modal-context";
 import { useEffect } from "react/cjs/react.development";
+import axios from "axios";
 
 function Header() {
   const { onClose, onOpen } = useContext(ModalActions);
+  const [currentName, setcurrentName] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false); // it use for refresh component
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
       setIsLoggedIn(true);
+      const apiUrl = `http://itmochart.netmvas.com:5000/user/me`;
+      axios
+        .get(apiUrl, {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        })
+        .then((response) => {
+          console.log(response.data.user.name);
+        });
     }
   }, [localStorage.getItem("token")]);
 
@@ -41,11 +54,14 @@ function Header() {
         <div>
           <img src={avatar} />
           {localStorage.getItem("token") ? (
-            <Link to="/">
-              <MyButton Click={logotHandler} isExit={true} isHole={true}>
-                Выйти
-              </MyButton>
-            </Link>
+            <div>
+              <h1></h1>
+              <Link to="/">
+                <MyButton Click={logotHandler} isExit={true} isHole={true}>
+                  Выйти
+                </MyButton>
+              </Link>
+            </div>
           ) : (
             <MyButton Click={onOpen} isHole={true}>
               Войти
