@@ -20,6 +20,7 @@ function StoreModal(props) {
       .then((res) => {
         console.log(res);
         props.close();
+        window.location.reload();
       })
       .catch((error) => {
         console.log(error);
