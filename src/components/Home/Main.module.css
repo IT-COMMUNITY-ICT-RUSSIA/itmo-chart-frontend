@@ -46,7 +46,9 @@
 }
 
 .right-content img {
-  width: 540px;
+  width: 700px;
+  border: 5px solid #d1d1e9;
+  border-radius: 20px;
 }
 .circle {
   content: "";

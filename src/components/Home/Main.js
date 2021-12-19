@@ -1,6 +1,6 @@
 import classes from "./Main.module.css";
 import MyButton from "../UI/MyButton";
-import welcomeImg from "../../assets/welcome-img.jpg";
+import welcomeImg from "../../assets/welcome.jpg";
 import React, { useContext, useState } from "react";
 import { ModalActions } from "../../store/modal-context";
 

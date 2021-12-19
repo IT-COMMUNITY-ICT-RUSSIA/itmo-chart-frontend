@@ -1,6 +1,7 @@
 import classes from "./HomeHeader.module.css";
 import MyButton from "../UI/MyButton";
 import logo_transparent from "../../assets/itmo_small_white_rus.png";
+import coins_img from "../../assets/dollar.png";
 import { Link } from "react-router-dom";
 
 import React, { useContext, useState } from "react";
@@ -12,6 +13,7 @@ function Header() {
   const { onClose, onOpen } = useContext(ModalActions);
   const [currentName, setcurrentName] = useState("");
   const [currentImage, setCurrentImage] = useState("");
+  const [currentCoin, setCurrentCoin] = useState("");
 
   const [isLoggedIn, setIsLoggedIn] = useState(false); // it use for refresh component
 
@@ -27,7 +29,7 @@ function Header() {
           },
         })
         .then((response) => {
-          console.log(response.data.user.isu_id);
+          setCurrentCoin(response.data.user.coins);
           setCurrentImage(response.data.user.isu_id);
           const fullName = response.data.user.name.split(" ");
           fullName.pop();
@@ -51,7 +53,7 @@ function Header() {
       <div className={classes.content}>
         <nav>
           <Link to="/top">Рейтинг</Link>
-          <Link to="/store">Магазин</Link>
+          {localStorage.getItem("token") && <Link to="/store">Магазин</Link>}
           {localStorage.getItem("token") && (
             <Link to="/account">Личный кабинет</Link>
           )}
@@ -59,7 +61,12 @@ function Header() {
         <div className={classes.info}>
           {localStorage.getItem("token") ? (
             <div className={classes["info-inner"]}>
-              <img src={`https://isu.ifmo.ru/userpics/${currentImage}.jpg`} />
+              <p>{currentCoin}</p>
+              <img className={classes.coins} alt={"coins"} src={coins_img} />
+              <img
+                className={classes["logo-img"]}
+                src={`https://isu.ifmo.ru/userpics/${currentImage}.jpg`}
+              />
               <div>
                 <h3>{currentName}</h3>
                 <Link to="/">

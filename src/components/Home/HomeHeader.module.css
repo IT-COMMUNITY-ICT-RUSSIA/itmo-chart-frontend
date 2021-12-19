@@ -47,13 +47,26 @@ nav a:hover {
   display: flex;
   align-items: center;
 }
-.info-inner img {
+.info-inner p {
+  font-family: "Inter";
+  display: block;
+  font-size: 25px;
+  line-height: 25px;
+}
+
+.logo-img {
   margin-right: 10px;
   width: 60px;
   height: 60px;
   border-radius: 50%;
 }
+
+.coins {
+  width: 25px;
+  margin: 0 2rem 0 0.3rem;
+}
 .info-inner h3 {
+  font-family: "inter";
   display: block;
   margin-top: 0;
   margin-bottom: 10px;

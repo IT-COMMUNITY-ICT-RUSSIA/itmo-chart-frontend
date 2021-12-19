@@ -9,6 +9,15 @@
   margin: 1rem;
   border-radius: 10px;
 }
+.person:nth-child(2) {
+  background-color: #ffd700;
+}
+.person:nth-child(3) {
+  background-color: #c0c0c0;
+}
+.person:nth-child(4) {
+  background-color: #d6985a;
+}
 .person div {
   flex: 1;
   display: block;
